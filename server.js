@@ -38,16 +38,16 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
-    message: "Welcome to my personal api! Here's what you need to know!",
-    documentation_url: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    base_url: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    welcome_to_aarons_api: true,
+    message: "Welcome to Aaron's api! Here's what you need to know!",
+    documentation_url: "https://github.com/middtown/express-personal-api/blob/master/README.md",
+    base_url: "https://nameless-journey-48917.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "videogame Enthusiest"}, 
+      {method: "POST", path: "/api/videogames", description: "Add your favorite videogames"}
     ]
-  })
+  });
 });
 
 /**********
