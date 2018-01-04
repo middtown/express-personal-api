@@ -12,7 +12,7 @@ app.use(bodyParser.json());
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -44,9 +44,42 @@ app.get('/api', function api_index(req, res) {
     base_url: "https://nameless-journey-48917.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "videogame Enthusiest"}, 
-      {method: "POST", path: "/api/videogames", description: "Add your favorite videogames"}
+      {method: "GET", path: "/api/profile", description: "videogame Enthusiest"},
+      {method: "GET", path: "/api/videogames", description: "videogame list"},  
+      {method: "POST", path: "/api/videogames/add", description: "Add your favorite videogames"},
+      {method: "DELETE", path: "/api/videogames/:id", description: "Delete your least favorite videogame by id"},
+      {method: "PUT", path: "/api/videogames/:id", description: "Update a videogame"},
+
     ]
+  });
+});
+
+
+app.get('/api/videogames', function(req, res){
+  db.Videogames.find(function(err, Videogames){
+    if(err){res.send("error.",err);}
+    res.json(Videogames);
+  });
+});
+
+app.get('/api/videogames/:id', function(req, res){
+  db.Videogames.findById(req.params.id, function(err, Videogames){
+    if(err){res.send("error.",err);}
+    res.json(Videogames);
+  });
+});
+
+app.post('/api/videogames', function(req, res){
+  db.Videogames.create(req.body, function(err, Videogames){
+    if(err){res.send("error.",err);}
+    res.json(Videogames);
+  });
+});
+
+app.delete('/api/videogames/:id', function(req, res){
+  db.Videogames.remove({_id: req.params.id},function(err, Videogames){
+    if(err){res.send("error.",err);}
+    res.json(Videogames);
   });
 });
 
