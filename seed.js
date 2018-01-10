@@ -7,31 +7,31 @@ var db = require('./models');
 var someVideogame = [
 {
 	title: "Mass Effect 2",
-	Console: "Xbox One & Playstation Pro",
+	console: "Xbox One & Playstation Pro",
 	year: "2017",
 	multipler: true
 },
 {
 	title: "Red Dead Redemption",
-	Console: "Xbox One & Playstation Pro",
+	console: "Xbox One & Playstation Pro",
 	year: "2018",
 	multipler: true
 },
 {
 	title: "Far Cry 5",
-	Console: "Xbox One & Playstation Pro",
+	console: "Xbox One & Playstation Pro",
 	year: "2018",
 	multipler: true
 },
 {
 	title: "Fallout 4",
-	Console: "Xbox One & Playstation Pro",
+	console: "Xbox One & Playstation Pro",
 	year: "2015",
 	multipler: false
 },
 {
 	title: "Kingdom Hearts 3",
-	Console: "Playstation 4",
+	console: "Playstation 4",
 	year: "2017",
 	multipler: false
 }

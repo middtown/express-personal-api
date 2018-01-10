@@ -70,11 +70,35 @@ app.get('/api/videogames/:id', function(req, res){
 });
 
 app.post('/api/videogames', function(req, res){
-  db.Videogames.create(req.body, function(err, Videogames){
-    if(err){res.send("error.",err);}
-    res.json(Videogames);
-  });
+  console.log(req.body);
+  db.Videogames.create(
+        { title: req.body.title, 
+          console: req.body.console,
+          mutltiplayer : req.body.mutltiplayer,
+          year: req.body.year
+        }, function(err, newVideogames){
+              if(err){res.send("error.",err);}
+                res.json(newVideogames);
+            });
 });
+
+app.put('/api/videogames/:id', function(req, res){
+  db.Videogames.findById(req.params.id, function(err, updateVideogames){
+    if(err)
+      res.json("error.",err);
+    if(updateVideogames)
+      console.log(updateVideogames);
+      updateVideogames.title = req.body.title;
+      updateVideogames.console = req.body.console;
+      updateVideogames.mutltiplayer = req.body.mutltiplayer;
+      updateVideogames.year = req.body.year;
+
+        updateVideogames.save(function (err, updateVideogames) {
+          if (err) return handleError(err);
+          res.json(updateVideogames);
+        });
+    });
+}); 
 
 app.delete('/api/videogames/:id', function(req, res){
   db.Videogames.remove({_id: req.params.id},function(err, Videogames){

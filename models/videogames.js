@@ -3,9 +3,10 @@ var mongoose = require('mongoose'),
 
 var VideogameSchema = new Schema({
 	title: String,
-	Console: String,
-	multipler: Boolean,
-	year: String
+	console: String,
+	year: String,
+	multipler: Boolean
+
 });
 
 var Videogames = mongoose.model('Videogame', VideogameSchema);
