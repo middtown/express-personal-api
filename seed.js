@@ -37,24 +37,13 @@ var someVideogame = [
 }
 ];
 
-app.get('/api/profile', function(req, res){
-  res.json({
-    name: "Aaron Middleton",
-    github_link: "https://github.com/middtown",
-    github_profile_image: "https://avatars0.githubusercontent.com/u/33731020?s=460&v=4",
-    current_city: "Denver",
-    pets:[{
-      name: "Redmond",
-      type: "humanoid mammal",
-      breed: "Ewok"
-    }]
-  });
-});
+
 //removing all videogames to replace games
 db.Videogames.remove({}, function(err, videogames){
 	if(err){
 		console.log('Error:', err);}
 	else{
+		console.log("games seeded");
 		db.Videogames.create(videogames, function(err, videogames){
 			if(err){
 				console.log('Error:', err);}

@@ -53,19 +53,31 @@ app.get('/api', function api_index(req, res) {
     ]
   });
 });
-
+app.get('/api/profile', function(req, res){
+  res.json({
+    name: "Aaron Middleton",
+    github_link: "https://github.com/middtown",
+    github_profile_image: "https://avatars0.githubusercontent.com/u/33731020?s=460&v=4",
+    current_city: "Denver",
+    pets:[{
+      name: "Redmond",
+      type: "humanoid mammal",
+      breed: "Ewok"
+    }]
+  });
+});
 
 app.get('/api/videogames', function(req, res){
-  db.Videogames.find(function(err, Videogames){
+  db.Videogames.find(function(err, allVideogames){
     if(err){res.send("error.",err);}
-    res.json(Videogames);
+    res.json(allVideogames);
   });
 });
 
 app.get('/api/videogames/:id', function(req, res){
-  db.Videogames.findById(req.params.id, function(err, Videogames){
+  db.Videogames.findById(req.params.id, function(err, oneVideogame){
     if(err){res.send("error.",err);}
-    res.json(Videogames);
+    res.json(oneVideogame);
   });
 });
 
@@ -93,7 +105,7 @@ app.put('/api/videogames/:id', function(req, res){
       updateVideogames.mutltiplayer = req.body.mutltiplayer;
       updateVideogames.year = req.body.year;
 
-        updateVideogames.save(function (err, updateVideogames) {
+      updateVideogames.save(function (err, updateVideogames) {
           if (err) return handleError(err);
           res.json(updateVideogames);
         });
@@ -101,9 +113,9 @@ app.put('/api/videogames/:id', function(req, res){
 }); 
 
 app.delete('/api/videogames/:id', function(req, res){
-  db.Videogames.remove({_id: req.params.id},function(err, Videogames){
+  db.Videogames.remove({_id: req.params.id},function(err, deleteVideogames){
     if(err){res.send("error.",err);}
-    res.json(Videogames);
+    res.json(deleteVideogames);
   });
 });
 
