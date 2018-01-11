@@ -13,7 +13,7 @@ app.use(bodyParser.json());
  ************/
 
 var db = require('./models');
-
+//console.log(db);
 /**********
  * ROUTES *
  **********/
@@ -69,6 +69,7 @@ app.get('/api/profile', function(req, res){
 
 app.get('/api/videogames', function(req, res){
   db.Videogames.find(function(err, allVideogames){
+    console.log(db.Videogames);
     if(err){res.send("error.",err);}
     res.json(allVideogames);
   });
@@ -116,6 +117,11 @@ app.delete('/api/videogames/:id', function(req, res){
   db.Videogames.remove({_id: req.params.id},function(err, deleteVideogames){
     if(err){res.send("error.",err);}
     res.json(deleteVideogames);
+    if(deleteVideogames);
+      console.log(deleteVideogames);
+      deleteVideogames.delete(function(err, deleteVideogames){
+        res.json(deleteVideogames);
+      });
   });
 });
 

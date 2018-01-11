@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 var db = require('./models');
 
-var someVideogame = [
+var newVideogames = [
 {
 	title: "Mass Effect 2",
 	console: "Xbox One & Playstation Pro",
@@ -44,7 +44,7 @@ db.Videogames.remove({}, function(err, videogames){
 		console.log('Error:', err);}
 	else{
 		console.log("games seeded");
-		db.Videogames.create(videogames, function(err, videogames){
+		db.Videogames.create(newVideogames, function(err, videogames){
 			if(err){
 				console.log('Error:', err);}
 			process.exit();
